@@ -1,0 +1,759 @@
+/* ================================================================
+   AL-IQTIYAAN OFFICIAL STYLESHEET
+   Project: Website Angkatan 2023
+   Last Update: April 2026
+================================================================*/
+
+/* --- 1. GLOBAL VARIABLES & RESET --- */
+:root {
+    --bg-dark: #0d1117;
+    /* Hitam (Background Utama) */
+    --bg-nav: #161b22;
+    /* Biru Tua Gelap (Navigasi & Kartu) */
+    --accent-blue: #00f2fe;
+    /* Biru Muda (Electric Blue) */
+    --deep-blue: #091a28;
+    /* Biru Tua (Primary Blue) */
+    --glow-blue: rgba(88, 166, 255, 0.2);
+    /* Efek Cahaya Biru */
+    --text-white: #ffffff;
+    /* Putih Murni */
+    --text-gray: #c9d1d9;
+    /* Abu-abu terang (untuk teks sekunder) */
+    --border-color: #30363d;
+    /* Border Biru Tua redup */
+    /* Variabel baru untuk pendaran cahaya */
+    --cyber-glow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 20px rgba(0, 242, 254, 0.3);
+    --card-bg: #161b22;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    /* Diperbaiki dari var sebelumnya agar terbaca */
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Animasi Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+img {
+    image-rendering: -webkit-optimize-contrast;
+    /* Untuk browser berbasis Chrome/Edge */
+    image-rendering: crisp-edges;
+    /* Untuk kualitas tepi yang tajam */
+    -ms-interpolation-mode: bicubic;
+    /* Untuk Internet Explorer lama */
+}
+
+/* --- 2. NAVIGATION BAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--bg-nav);
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 0;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(0 0 4px var(--accent-blue));
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    color: var(--text-white);
+    filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.3));
+}
+
+.nav-links {
+    animation: fadeInNav 1s ease-out;
+    margin-right: 0;
+}
+
+@keyframes fadeInNav {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links a {
+    color: var(--text-white) !important;
+    text-decoration: none;
+    margin-left: 20px;
+    position: relative;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--glow-blue);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-blue);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+    box-shadow: 0 0 8px var(--accent-blue);
+}
+
+.nav-links a:hover {
+    color: var(--accent-blue) !important;
+    text-shadow: 0 0 10px var(--accent-blue);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:active {
+    transform: scale(0.95);
+}
+
+.nav-links a.active {
+    color: var(--accent-blue);
+}
+
+/* --- 3. HERO SECTION (FOTO ANGKATAN) --- */
+.hero-section {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(13, 17, 23, 0.2), rgba(13, 17, 23, 0.6)),
+        url('foto/beranda4.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.5;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    /* Mulai dari transparan agar animasi terasa halus */
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+    /* Delay 0.5 detik */
+}
+
+/* Hero Section khusus untuk Beranda 2 */
+.hero-section-alt {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* GANTI 'foto/nama-foto-baru.jpg' dengan file foto pilihanmu */
+    background: linear-gradient(rgba(13, 17, 23, 0.3), rgba(13, 17, 23, 0.7)),
+        url('foto/beranda8.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Efek memudar tetap dipertahankan agar konsisten */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.hero-section-alt h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-section-alt p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    line-height: 1.5;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    /* Mulai dari transparan agar animasi terasa halus */
+    animation: fadeInUp 1s ease-out 0.5s forwards;
+    /* Delay 0.5 detik */
+}
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+/* --- 4. BUTTONS --- */
+.main-btn {
+    padding: 15px 35px;
+    background: transparent;
+    color: var(--text-white);
+    border: 2px solid var(--accent-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 15px var(--glow-blue);
+    transition: all 0.4s ease;
+}
+
+.main-btn:hover {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--accent-blue);
+    transform: translateY(-3px);
+}
+
+.main-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0 15px var(--glow-blue);
+}
+
+/* --- 5. FOOTER & STATISTICS COMBINED --- */
+.main-footer {
+    background-color: var(--bg-dark);
+    padding: 20px 5% 15px 5%;
+    border-top: 1px solid var(--border-color);
+    margin-top: 0;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+/* Kontainer Stats (Kiri & Kanan) */
+.stat-card {
+    background: transparent !important;
+    border: none !important;
+    text-align: center;
+    min-width: 150px;
+}
+
+.stat-card h3 {
+    color: var(--text-gray);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+#counter,
+.status-tag {
+    font-size: 1.48rem;
+    color: white;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--accent-blue);
+    display: block;
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Kontainer Tengah (Logo & Socials) */
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+}
+
+.footer-img {
+    height: 80px;
+    width: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px var(--glow-blue));
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.arabic-text {
+    width: 100%;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    margin: 5px 0 15px 0;
+    text-align: center;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent-blue);
+    text-shadow: 0 0 8px var(--accent-blue);
+}
+
+/* --- 6. COPYRIGHT BAR --- */
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: var(--text-gray);
+}
+
+.photo-box img {
+    /* Hapus blur(1px) jika ingin benar-benar tajam */
+    filter: brightness(1) contrast(1.1) saturate(1.1);
+    transition: all 0.4s ease;
+}
+
+/* ============================================================
+   KHUSUS BAGIAN DATABASE (CYBER GLOW BLUE)
+   ============================================================ */
+.database-section {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    /* --- TEKSTUR SEGI ENAM (HITAM, PUTIH, ABU-ABU) --- */
+    background-color: #000000;
+    /* Warna dasar Hitam pekat */
+    background-image:
+        /* Lapisan 1 & 2: Abu-abu Gelap untuk dimensi */
+        linear-gradient(30deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+        linear-gradient(150deg, #1a1a1a 12%, transparent 12.5%, transparent 87%, #1a1a1a 87.5%, #1a1a1a),
+        /* Lapisan 3 & 4: Abu-abu Terang untuk variasi */
+        linear-gradient(30deg, #262626 12%, transparent 12.5%, transparent 87%, #262626 87.5%, #262626),
+        linear-gradient(150deg, #262626 12%, transparent 12.5%, transparent 87%, #262626 87.5%, #262626),
+        /* Lapisan 5 & 6: Putih Transparan untuk kilau/highlight */
+        linear-gradient(60deg, rgba(255, 255, 255, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05)),
+        linear-gradient(60deg, rgba(255, 255, 255, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05));
+
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+/* Container utama yang membungkus semua grup */
+.database-grid {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    /* Gap diatur oleh role-group */
+    width: 100%;
+}
+
+/* Garis Kabel Tengah yang Menyala */
+.main-wire {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #00f2fe, transparent);
+    box-shadow: 0 0 15px #00f2fe;
+    z-index: 0;
+}
+
+/* Memaksa Anggota Berbaris 3 ke Samping */
+.member-grid-container {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 40px 30px;
+    width: 100%;
+    max-width: 1000px;
+    justify-items: center;
+    z-index: 1;
+    margin-bottom: 40px;
+}
+
+/* Grouping untuk memberi GAP/Jarak antar jabatan */
+.role-group {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 80px;
+    /* Jarak antar jabatan */
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+/* Grid khusus untuk anggota (3 ke samping) */
+/* Memastikan anggota berbaris 3 ke samping */
+.member-grid {
+    display: grid !important;
+    /* Memaksa mode grid */
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px;
+    justify-items: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Membuat Garis Penghubung (Kabel Neon) */
+.connector-line {
+    position: relative;
+}
+
+/* Desain Kartu Bergaya Cyber */
+.member-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    border-radius: 15px;
+    padding: 30px 15px;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Efek Hover Cyber Glow */
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: #00f2fe;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+}
+
+/* FOTO LINGKARAN */
+.photo-box-db {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    margin: 15px 0;
+    border: 2px solid var(--accent-blue);
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--glow-blue);
+    background: #000;
+}
+
+.member-card:hover .photo-box-db {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent-blue);
+}
+
+.photo-box-db img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(1.1) contrast(1.1);
+    /* Efek agar lebih tajam */
+}
+
+/* Teks Jabatan (Paling Atas) */
+.role {
+    font-family: 'Courier New', monospace;
+    color: var(--accent-blue);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px var(--glow-blue);
+}
+
+/* Teks Nama (Paling Bawah) */
+.member-name {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Baris Jabatan Inti (2 Orang per Baris) */
+.member-card.core {
+    grid-column: span 3;
+    /* 6 / 3 = 2 kartu */
+    max-width: 400px;
+    /* Membatasi lebar agar tidak terlalu besar */
+}
+
+/* Baris Anggota (3 Orang per Baris) */
+.member-card.member {
+    grid-column: span 2;
+    /* 6 / 2 = 3 kartu */
+    max-width: 320px;
+}
+
+/* 1 Orang Terakhir (Di Tengah Paling Bawah) */
+.member-card.last-one {
+    max-width: 350px;
+    border-color: #ff0055;
+    /* Efek cahaya pink neon pada bingkai kartu */
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+}
+
+.member-card.last-one .role {
+    color: #b91c1c;
+    text-shadow: 0 0 5px rgba(230, 57, 70, 0.6);
+    /* Hapus shadow agar tulisan lebih tegas */
+    letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    background: none;
+    /* Pastikan tidak ada background yang mengganggu */
+}
+
+.member-card.last-one .photo-box-db {
+    border-color: #e63946;
+    box-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
+}
+
+/* Update juga sudut cyber-nya agar ikut berwarna pink saat di-hover */
+.member-card.last-one:hover::before {
+    background:
+        linear-gradient(to right, #ff0055 2px, transparent 2px) 0 0 / 15px 2px no-repeat,
+        linear-gradient(to bottom, #ff0055 2px, transparent 2px) 0 0 / 2px 15px no-repeat,
+        linear-gradient(to left, #ff0055 2px, transparent 2px) 100% 0 / 15px 2px no-repeat,
+        linear-gradient(to bottom, #ff0055 2px, transparent 2px) 100% 0 / 2px 15px no-repeat,
+        linear-gradient(to right, #ff0055 2px, transparent 2px) 0 100% / 15px 2px no-repeat,
+        linear-gradient(to top, #ff0055 2px, transparent 2px) 0 100% / 2px 15px no-repeat,
+        linear-gradient(to left, #ff0055 2px, transparent 2px) 100% 100% / 15px 2px no-repeat,
+        linear-gradient(to top, #ff0055 2px, transparent 2px) 100% 100% / 2px 15px no-repeat;
+}
+
+/* ============================================================
+   JUDUL DATABASE (STRUKTUR ANGKATAN 28)
+   ============================================================ */
+.gallery-title {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 80px;
+    font-weight: 900;
+    color: var(--text-white);
+    filter: none;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Garis dekoratif di bawah judul */
+.gallery-title::after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 3px;
+    background: #00f2fe;
+    margin: 15px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 15px #00f2fe;
+    animation: pulse-glow 2s infinite;
+}
+
+/* Animasi agar garis bawah sedikit berdenyut */
+@keyframes pulse-glow {
+    0% {
+        opacity: 0.5;
+        width: 100px;
+    }
+
+    50% {
+        opacity: 1;
+        width: 200px;
+    }
+
+    100% {
+        opacity: 0.5;
+        width: 100px;
+    }
+}
+
+/* POSISI KHUSUS ANGGOTA KE-70 (Center) */
+.last-member-wrapper {
+    grid-column: 1 / -1;
+    /* Mengambil ruang dari kolom 1 sampai terakhir */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+    .member-grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .last-member-wrapper {
+        grid-column: auto;
+    }
+}
+
+/* ============================================================
+   DOKUMENTASI STYLE
+   ============================================================ */
+.doc-wrapper {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    /* Jarak antar baris kegiatan */
+}
+
+.doc-card {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+/* KEAJAIBAN SELANG-SELING: Membalik baris genap (2, 4, 6...) */
+.doc-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Bagian Gambar */
+.doc-image {
+    flex: 1;
+    position: relative;
+    border: 2px solid #262626;
+    /* Abu-abu sesuai tekstur hexagon */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.doc-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+
+/* Bagian Teks */
+.doc-text {
+    flex: 1;
+}
+
+.doc-text h3 {
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    /* Glow putih */
+}
+
+.doc-text p {
+    font-family: 'Segoe UI', sans-serif;
+    color: #cccccc;
+    /* Abu-abu terang */
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+/* Hover Effect */
+.doc-card:hover .doc-image {
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.doc-card:hover .doc-image img {
+    transform: scale(1.05);
+}
+
+/* Responsive: Di HP berubah jadi tumpuk biasa */
+@media (max-width: 768px) {
+
+    .doc-card,
+    .doc-card:nth-child(even) {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .doc-image img {
+        height: 250px;
+    }
+}
