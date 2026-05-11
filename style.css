@@ -757,3 +757,16 @@ img {
         height: 250px;
     }
 }
+
+/* Keadaan awal: tersembunyi dan sedikit bergeser ke bawah */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Keadaan setelah muncul: terlihat dan kembali ke posisi semula */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}

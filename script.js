@@ -40,3 +40,21 @@ function animateCounter(elementId, targetValue) {
 function showAlert() {
     alert("Halo Al-Iqtiyaan! Sistem sedang dalam tahap pengembangan (v1.0 Beta).");
 }
+
+// Fungsi untuk memantau scroll
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150; // Jarak pemicu munculnya elemen
+
+        if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("active");
+        }
+    });
+}
+
+// Jalankan fungsi setiap kali layar di-scroll
+window.addEventListener("scroll", revealOnScroll);
